@@ -1,12 +1,19 @@
 package com.fullteaching.backend.unit.comment;
 
 import org.mockito.Mockito;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 
 import com.fullteaching.backend.comment.Comment;
 import com.fullteaching.backend.user.User;
+
+
 
 public class CommentUnitTest {
 	
@@ -34,14 +41,54 @@ public class CommentUnitTest {
 	}
 	
 	@Test
-	public void testeGetCommentParent() {
+	public void testeGetCommentParentConstrutor() {
 		Comment resposta = new Comment(mensagem, data, usuario, comentario);
 		Assert.assertTrue(comentario.equals(resposta.getCommentParent()));
 	}
 	
 	@Test
-	public void testeGetId() {
-		Assert.assertNotNull(comentario.getId());
+	public void testeSetGetId() {
+		comentario.setId(0);
+		Assert.assertEquals(0, comentario.getId());;
+	}
+	
+	@Test
+	public void testeSetGetMessage() {
+		comentario.setMessage("qualidade e teste");
+		Assert.assertEquals("qualidade e teste", comentario.getMessage());
+	}
+	
+	@Test
+	public void testeSetGetDate() {
+		comentario.setDate(111);
+		Assert.assertEquals(111, comentario.getDate());
+	}
+	
+	@Test
+	public void testeSetGetReplies() {
+		List<Comment> respostas = new ArrayList<Comment>();
+		respostas.add(comentario);
+		comentario.setReplies(respostas);
+		Assert.assertTrue(comentario.getReplies().contains(comentario));
+	}
+	
+	@Test 
+	public void testeSetGetUser() {
+		User usuaria = Mockito.mock(User.class);
+		comentario.setUser(usuaria);
+		Assert.assertEquals(usuaria, comentario.getUser());
+	}
+	
+	@Test 
+	public void testeSetGetCommentParent() {
+		comentario.setCommentParent(comentario);
+		Assert.assertEquals(comentario, comentario.getCommentParent());
+	}
+	
+	@Test
+	public void testeToString() {
+		String string =  "Comment[message: \"" + mensagem + "\", author: \"" + usuario.getNickName() + "\", parent: \"" + "null" + "\", #replies: " + 0 + "date: \"" + data + "\"]";
+		Assert.assertTrue(comentario.toString().equals(string));
 	}
 
 }
