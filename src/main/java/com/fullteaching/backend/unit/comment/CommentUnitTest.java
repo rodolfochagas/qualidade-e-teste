@@ -49,7 +49,7 @@ public class CommentUnitTest {
 	@Test
 	public void testeSetGetId() {
 		comentario.setId(0);
-		Assert.assertEquals(0, comentario.getId());;
+		Assert.assertEquals(0, comentario.getId());
 	}
 	
 	@Test
