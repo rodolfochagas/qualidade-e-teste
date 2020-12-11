@@ -19,47 +19,48 @@ public class SessionUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetId() {
+	public void testeSetGetId() {
 		sessao.setId(0);
 		Assert.assertEquals(0, sessao.getId());
 	}
 	
 	@Test
-	public void TesteSetGetTitle() {
+	public void testeSetGetTitle() {
 		sessao.setTitle("Titulo");
 		Assert.assertEquals("Titulo", sessao.getTitle());
 	}
 	
 	@Test
-	public void TesteSetGetDescription() {
+	public void testeSetGetDescription() {
 		sessao.setDescription("Descricao");
 		Assert.assertEquals("Descricao", sessao.getDescription());
 	}
 	
 	@Test
-	public void TesteSetGetDate() {
+	public void testeSetGetDate() {
 		sessao.setDate(111);
 		Assert.assertEquals(111, sessao.getDate());
 	}
 	
 	@Test
-	public void TesteSetGetCourse() {
+	public void testeSetGetCourse() {
 		Course curso = Mockito.mock(Course.class);
 		sessao.setCourse(curso);
 		Assert.assertEquals(curso, sessao.getCourse());
 	}
 	
 	@Test
-	public void TesteEquals() {
+	public void testeEquals() {
 		Session outraSessao = new Session();
-		outraSessao.setId(0);
+		Session sessaoDiferente = new Session();
 		sessao.setId(0);
-		Assert.assertTrue(sessao.equals(outraSessao));
-		
+		outraSessao.setId(0);
+		sessaoDiferente.setId(2);
+		Assert.assertTrue(sessao.equals(outraSessao) && !sessao.equals(sessaoDiferente));
 	}
 	
 	@Test
-	public void TesteToString() {
+	public void testeToString() {
 		sessao.setTitle("Titulo");
 		sessao.setDescription("Descricao");
 		sessao.setDate(111);

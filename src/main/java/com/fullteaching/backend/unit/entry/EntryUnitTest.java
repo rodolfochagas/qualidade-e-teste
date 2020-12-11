@@ -22,25 +22,25 @@ public class EntryUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetId() {
+	public void testeSetGetId() {
 		entrada.setId(0);
 		Assert.assertEquals(0, entrada.getId());
 	}
 	
 	@Test
-	public void TesteSetGetTitle() {
+	public void testeSetGetTitle() {
 		entrada.setTitle("Titulo");
 		Assert.assertEquals("Titulo", entrada.getTitle());
 	}
 	
 	@Test
-	public void TesteSetGetDate() {
+	public void testeSetGetDate() {
 		entrada.setDate(111);
 		Assert.assertEquals(111,entrada.getDate());
 	}
 	
 	@Test
-	public void TesteSetGetComments() {
+	public void testeSetGetComments() {
 		List <Comment> comentarios = new ArrayList<>();
 		Comment comentario = Mockito.mock(Comment.class);
 		comentarios.add(comentario);
@@ -49,14 +49,14 @@ public class EntryUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetUser() {
+	public void testeSetGetUser() {
 		User usuario = Mockito.mock(User.class);
 		entrada.setUser(usuario);
 		Assert.assertEquals(usuario, entrada.getUser());
 	}
 	
 	@Test
-	public void TesteToString() {
+	public void testeToString() {
 		String titulo = "Titulo";
 		entrada.setTitle(titulo);
 		User usuario = Mockito.mock(User.class);

@@ -24,25 +24,25 @@ public class UserUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetId() {
+	public void testeSetGetId() {
 		usuario.setId((long)0);
 		Assert.assertTrue((long) 0 == usuario.getId());
 	}
 	
 	@Test
-	public void TesteSetGetName() {
+	public void testeSetGetName() {
 		usuario.setName("nome");
 		Assert.assertEquals("nome", usuario.getName());
 	}
 	
 	@Test
-	public void TesteSetGetPasswordHash() {
+	public void testeSetGetPasswordHash() {
 		usuario.setPasswordHash("senha");
 		Assert.assertEquals("senha", usuario.getPasswordHash());
 	}
 	
 	@Test
-	public void TesteSetGetRoles() {
+	public void testeSetGetRoles() {
 		List <String> papeis = new ArrayList<>();
 		papeis.add("papel");
 		usuario.setRoles(papeis);
@@ -50,25 +50,25 @@ public class UserUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetNickName() {
+	public void testeSetGetNickName() {
 		usuario.setNickName("apelido");
 		Assert.assertEquals("apelido", usuario.getNickName());
 	}
 	
 	@Test
-	public void TesteSetGetPicture() {
+	public void testeSetGetPicture() {
 		usuario.setPicture("foto");
 		Assert.assertEquals("foto", usuario.getPicture());
 	}
 	
 	@Test
-	public void TesteSetGetRegistrationDate() {
+	public void testeSetGetRegistrationDate() {
 		usuario.setRegistrationDate(111);
 		Assert.assertEquals(111, usuario.getRegistrationDate());
 	}
 	
 	@Test
-	public void TesteSetGetCourses() {
+	public void testeSetGetCourses() {
 		Set<Course> cursos = new HashSet<>();
 		Course curso = Mockito.mock(Course.class);
 		cursos.add(curso);
@@ -77,26 +77,41 @@ public class UserUnitTest {
 	}
 	
 	@Test
-	public void TesteEquals() {
+	public void testeEquals() {
 		User outroUsuario = new User();
+		User usuarioDiferente1 = new User();
+		User usuarioDiferente2 = new User();
+		User usuarioDiferente3 = new User();
+
 		long id = (long) 0;
+		long idDiferente = (long) 1;
 		String nome = "nome";
-		outroUsuario.setId(id);
+		String nomeDiferente = "nomeDiferente";
+		
 		usuario.setId(id);
-		outroUsuario.setName(nome);
+		outroUsuario.setId(id);
+		usuarioDiferente1.setId(idDiferente);
+		usuarioDiferente2.setId(idDiferente);
+		usuarioDiferente3.setId(id);
+
 		usuario.setName(nome);
-		Assert.assertTrue(usuario.equals(outroUsuario));
+		outroUsuario.setName(nome);
+		usuarioDiferente1.setName(nomeDiferente);
+		usuarioDiferente2.setName(nome);
+		usuarioDiferente3.setName(nomeDiferente);
+
+		Assert.assertTrue(usuario.equals(outroUsuario) && !usuario.equals(usuarioDiferente1) && !usuario.equals(usuarioDiferente2) && !usuario.equals(usuarioDiferente3));
 	}
 	
 	@Test
-	public void TesteHashCode() {
+	public void testeHashCode() {
 		usuario.setName("nome");
 		int hashCodeUsuario = usuario.getName().hashCode();
 		Assert.assertEquals(hashCodeUsuario, usuario.hashCode());
 	}
 	
 	@Test
-	public void TesteToString() {
+	public void testeToString() {
 		usuario.setNickName("joazinho");
 		Assert.assertEquals(usuario.getNickName(), usuario.toString());
 	}

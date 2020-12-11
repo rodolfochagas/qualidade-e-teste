@@ -31,12 +31,12 @@ public class CommentUnitTest {
 	}
 	
 	@Test
-	public void TesteComentarioCriado() {
+	public void testeComentarioCriado() {
 		Assert.assertNotNull(comentario);
 	}
 	
 	@Test
-	public void TesteGetUser() {
+	public void testeGetUser() {
 		Assert.assertTrue(usuario.equals(comentario.getUser()));
 	}
 	

@@ -24,26 +24,26 @@ public class CourseDetailsUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetId() {
+	public void testeSetGetId() {
 		detalhes.setId(0);
 		Assert.assertEquals(0, detalhes.getId());
 	}
 
 	@Test
-	public void TesteSetGetInfo() {
+	public void testeSetGetInfo() {
 		detalhes.setInfo("Informacao");
 		Assert.assertEquals("Informacao", detalhes.getInfo());
 	}
 	
 	@Test
-	public void TesteSetGetForum() {
+	public void testeSetGetForum() {
 		Forum forum = Mockito.mock(Forum.class);
 		detalhes.setForum(forum);
 		Assert.assertEquals(forum, detalhes.getForum());
 	}
 	
 	@Test
-	public void TesteSetGetFiles() {
+	public void testeSetGetFiles() {
 		List<FileGroup> arquivos = new ArrayList<>();
 		FileGroup arquivo = Mockito.mock(FileGroup.class);
 		arquivos.add(arquivo);
@@ -52,13 +52,10 @@ public class CourseDetailsUnitTest {
 	}
 
 	@Test
-	public void TesteSetGetCourse() {
+	public void testeSetGetCourse() {
 		Course curso = Mockito.mock(Course.class);
 		detalhes.setCourse(curso);
 		Assert.assertEquals(curso, detalhes.getCourse());
 	}
-
-
-	
 
 }

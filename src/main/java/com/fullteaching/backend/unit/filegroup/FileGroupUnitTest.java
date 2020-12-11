@@ -21,19 +21,19 @@ public class FileGroupUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetId() {
+	public void testeSetGetId() {
 		grupo.setId(0);
 		Assert.assertEquals(0, grupo.getId());
 	}
 	
 	@Test
-	public void TesteSetGetTitle() {
+	public void testeSetGetTitle() {
 		grupo.setTitle("Titulo");
 		Assert.assertEquals("Titulo", grupo.getTitle());
 	}
 	
 	@Test
-	public void TesteSetGetFiles() {
+	public void testeSetGetFiles() {
 		List <File> arquivos = new ArrayList<>();
 		File arquivo = Mockito.mock(File.class);
 		arquivos.add(arquivo);
@@ -42,7 +42,7 @@ public class FileGroupUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetFileGroups() {
+	public void testeSetGetFileGroups() {
 		FileGroup grupoPai = Mockito.mock(FileGroup.class);
 		List <FileGroup> grupos = new ArrayList<>();		
 		grupos.add(grupoPai);
@@ -52,32 +52,24 @@ public class FileGroupUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetGroupParent() {
+	public void testeSetGetGroupParent() {
 		FileGroup grupoPai = Mockito.mock(FileGroup.class);
 		grupo.setFileGroupParent(grupoPai);
 		Assert.assertEquals(grupoPai, grupo.getFileGroupParent());
 	}
 	
 	@Test
-	public void TesteEquals() {
+	public void testeEquals() {
 		FileGroup outroGrupo = new FileGroup();
-		outroGrupo.setId(1);
+		FileGroup grupoDiferente = new FileGroup();
 		grupo.setId(1);
-		Assert.assertTrue(grupo.equals(outroGrupo));
+		outroGrupo.setId(1);
+		grupoDiferente.setId(2);
+		Assert.assertTrue(grupo.equals(outroGrupo) && !grupo.equals(grupoDiferente));
 	}
 	
 	@Test
-	public void TesteUpdateFileIndexOrder() {
-		List <File> arquivos = new ArrayList<>();
-		File arquivo = Mockito.mock(File.class); 
-		arquivos.add(arquivo);
-		grupo.setFiles(arquivos);
-		grupo.updateFileIndexOrder();
-		Assert.assertNotEquals(1, arquivo.getIndexOrder());
-	}
-	
-	@Test
-	public void TesteToString() {
+	public void testeToString() {
 		grupo.setTitle("Titulo");
 		FileGroup grupoPai = Mockito.mock(FileGroup.class);
 		List <File> arquivos = new ArrayList<>();

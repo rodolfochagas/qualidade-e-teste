@@ -16,57 +16,59 @@ public class FileUnitTest {
 	}
 
 	@Test
-	public void TesteSetGetId() {
+	public void testeSetGetId() {
 		arquivo.setId(0);
 		Assert.assertEquals(0, arquivo.getId());
 	}
 	
 	@Test
-	public void TesteSetGetType() {
+	public void testeSetGetType() {
 		arquivo.setType(1);
 		Assert.assertEquals(1, arquivo.getType());
 	}
 	
 	@Test
-	public void TesteSetGetName() {
+	public void testeSetGetName() {
 		arquivo.setName("nome");
 		Assert.assertEquals("nome", arquivo.getName());
 	}
 	
 	@Test
-	public void TesteSetGetNameIndent() {
+	public void testeSetGetNameIndent() {
 		arquivo.setNameIdent("0");
 		Assert.assertEquals("0", arquivo.getNameIdent());
 	}
 	
 	@Test
-	public void TesteSetGetLink() {
+	public void testeSetGetLink() {
 		arquivo.setLink("link");
 		Assert.assertEquals("link", arquivo.getLink());
 	}
 	
 	@Test
-	public void TesteSetGetIndexOrder() {
+	public void testeSetGetIndexOrder() {
 		arquivo.setIndexOrder(0);
 		Assert.assertEquals(0, arquivo.getIndexOrder());
 	}
 	
 	@Test
-	public void TesteEquals() {
+	public void testeEquals() {
 		File outroArquivo = new File();
-		outroArquivo.setId((long)0);
+		File arquivoDiferente = new File();
 		arquivo.setId((long) 0);
-		Assert.assertTrue(arquivo.equals(outroArquivo));
+		outroArquivo.setId((long)0);
+		arquivoDiferente.setId((long) 2);
+		Assert.assertTrue(arquivo.equals(outroArquivo) && !arquivo.equals(arquivoDiferente));
 	}
 	
 	@Test
-	public void TesteGetFileExtension() {
+	public void testeGetFileExtension() {
 		arquivo.setNameIdent("nome.java");
 		Assert.assertEquals("java", arquivo.getFileExtension());
 	}
 	
 	@Test
-	public void TesteToString() {
+	public void testeToString() {
 		arquivo.setName("Arquivo");
 		arquivo.setNameIdent("1");
 		arquivo.setLink("link");

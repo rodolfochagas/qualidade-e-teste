@@ -21,25 +21,25 @@ public class ForumUnitTest {
 	}
 	
 	@Test
-	public void TesteSetGetId() {
+	public void testeSetGetId() {
 		forum.setId(0);
 		Assert.assertEquals(0, forum.getId());
 	}
 	
 	@Test
-	public void TesteSetIsActivated() {
+	public void testeSetIsActivated() {
 		forum.setActivated(true);
 		Assert.assertTrue(forum.isActivated());
 		
 	}
 	
-	public void TesteSetIsNotActivated() {
+	public void testeSetIsNotActivated() {
 		forum.setActivated(false);
 		Assert.assertFalse(forum.isActivated());		
 	}
 	
 	@Test
-	public void TesteSetGetEntries() {
+	public void testeSetGetEntries() {
 		List<Entry> entradas = new ArrayList<>();
 		Entry entrada = Mockito.mock(Entry.class);
 		entradas.add(entrada);
@@ -48,7 +48,7 @@ public class ForumUnitTest {
 	}
 	
 	@Test
-	public void TesteToString() {
+	public void testeToString() {
 		List<Entry> entradas = new ArrayList<>();
 		Entry entrada = Mockito.mock(Entry.class);
 		entradas.add(entrada);
@@ -61,4 +61,4 @@ public class ForumUnitTest {
 		
 	}
 
-}
+} 

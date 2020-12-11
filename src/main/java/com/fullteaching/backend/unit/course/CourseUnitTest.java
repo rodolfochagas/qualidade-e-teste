@@ -78,9 +78,11 @@ public class CourseUnitTest {
 	@Test
 	public void testeEquals() {
 		Course outroCurso = new Course();
-		outroCurso.setId(1);
+		Course cursoDiferente = new Course();
 		curso.setId(1);
-		Assert.assertTrue(curso.equals(outroCurso));
+		outroCurso.setId(1);
+		cursoDiferente.setId(2);
+		Assert.assertTrue(curso.equals(outroCurso) && !curso.equals(cursoDiferente));
 	}
 	
 	@Test
