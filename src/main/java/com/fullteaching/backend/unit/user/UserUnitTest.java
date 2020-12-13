@@ -102,7 +102,24 @@ public class UserUnitTest {
 
 		Assert.assertTrue(usuario.equals(outroUsuario) && !usuario.equals(usuarioDiferente1) && !usuario.equals(usuarioDiferente2) && !usuario.equals(usuarioDiferente3));
 	}
+
+	@Test
+	public void testeEqualsNulo() {
+		Assert.assertFalse(usuario.equals(null));
+	}
 	
+	@Test
+	public void testeEqualsMesmaInstancia() {
+		User outroUsuario = new User("Nome", "Senha", "Apelido", "Foto");
+		Assert.assertTrue(outroUsuario.equals(outroUsuario));
+	}
+
+	@Test
+	public void testeEqualsClasseDiferente() {
+		Course curso = Mockito.mock(Course.class);
+		Assert.assertFalse(usuario.equals(curso));
+	}
+
 	@Test
 	public void testeHashCode() {
 		usuario.setName("nome");
@@ -115,5 +132,4 @@ public class UserUnitTest {
 		usuario.setNickName("joazinho");
 		Assert.assertEquals(usuario.getNickName(), usuario.toString());
 	}
-
 }
