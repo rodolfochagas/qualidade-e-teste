@@ -58,4 +58,10 @@ public class CourseDetailsUnitTest {
 		Assert.assertEquals(curso, detalhes.getCourse());
 	}
 
+	@Test
+	public void testeConstructorcomCourse() {
+		Course curso = Mockito.mock(Course.class);
+		CourseDetails detalhesDeCurso = new CourseDetails(curso);
+		Assert.assertEquals(curso, detalhesDeCurso.getCourse());
+	}
 }
