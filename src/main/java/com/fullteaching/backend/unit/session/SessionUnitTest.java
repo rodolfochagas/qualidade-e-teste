@@ -58,7 +58,24 @@ public class SessionUnitTest {
 		sessaoDiferente.setId(2);
 		Assert.assertTrue(sessao.equals(outraSessao) && !sessao.equals(sessaoDiferente));
 	}
+
+	@Test
+	public void testeEqualsNulo() {
+		Assert.assertFalse(sessao.equals(null));
+	}
+
+	@Test
+	public void testeEqualsMesmaInstancia() {
+		Session outraSessao = new Session("Título", "descrição", (long) 1);
+		Assert.assertTrue(outraSessao.equals(outraSessao));
+	}
 	
+	@Test
+	public void testeEqualsOutraClasse() {
+		Course curso = Mockito.mock(Course.class);
+		Assert.assertFalse(sessao.equals(curso));
+	}
+
 	@Test
 	public void testeToString() {
 		sessao.setTitle("Titulo");
@@ -67,6 +84,4 @@ public class SessionUnitTest {
 		String string = "Session[title: \"" + sessao.getTitle() + "\", description: \"" + sessao.getDescription() + "\", date: \"" + sessao.getDate() + "\"]";
 		Assert.assertEquals(string, sessao.toString());
 	}
-
-
 }
