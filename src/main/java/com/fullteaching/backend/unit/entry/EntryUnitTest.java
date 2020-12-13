@@ -29,8 +29,9 @@ public class EntryUnitTest {
 	
 	@Test
 	public void testeSetGetTitle() {
-		entrada.setTitle("Titulo");
-		Assert.assertEquals("Titulo", entrada.getTitle());
+		User usuario = Mockito.mock(User.class);
+		Entry novaEntrada = new Entry("Titulo", (long) 1111, usuario);
+		Assert.assertEquals("Titulo", novaEntrada.getTitle());
 	}
 	
 	@Test
@@ -69,5 +70,4 @@ public class EntryUnitTest {
 		String mensagem = "Entry[title: \"" + titulo + "\", author: \"" + entrada.getUser().getNickName() + "\", date: " + entrada.getDate() + ", #comments: " + entrada.getComments().size() + "]";
 		Assert.assertEquals(mensagem, entrada.toString());	
 	}
-
 }
