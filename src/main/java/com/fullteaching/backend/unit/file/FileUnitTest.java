@@ -76,4 +76,16 @@ public class FileUnitTest {
 		String string = "File[name: \"" + arquivo.getName() + "\", id: \"" + arquivo.getNameIdent() + "\", link: \"" + arquivo.getLink() + ", indexOrder: " + arquivo.getIndexOrder() + "]";
 		Assert.assertEquals(string, arquivo.toString());
 	}
+
+	@Test
+	public void testeConstructorTypeName() {
+		File arquivoNovo = new File(1, "Nome");
+		Assert.assertTrue(arquivoNovo.getName() == "Nome" && arquivoNovo.getType() == 1);
+	}
+
+	@Test
+	public void testeConstructorTypeNameLink() {
+		File arquivoNovo = new File(1, "Nome", "link");
+		Assert.assertTrue(arquivoNovo.getName() == "Nome" && arquivoNovo.getType() == 1 && arquivoNovo.getLink() == "link");
+	}
 }
