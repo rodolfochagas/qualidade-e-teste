@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.junit.Before;
 
+import com.fullteaching.backend.comment.Comment;
 import com.fullteaching.backend.entry.Entry;
 import com.fullteaching.backend.forum.Forum;
 
@@ -25,7 +26,13 @@ public class ForumUnitTest {
 		forum.setId(0);
 		Assert.assertEquals(0, forum.getId());
 	}
-	
+
+	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		forum.setId((long) 12345);
+		Assert.assertEquals((long) 12345, forum.getId());
+	}
+
 	@Test
 	public void testeSetIsActivated() {
 		forum.setActivated(true);
@@ -33,9 +40,10 @@ public class ForumUnitTest {
 		
 	}
 	
+	@Test
 	public void testeSetIsNotActivated() {
 		forum.setActivated(false);
-		Assert.assertFalse(forum.isActivated());		
+		Assert.assertFalse(forum.isActivated());
 	}
 	
 	@Test
@@ -58,7 +66,26 @@ public class ForumUnitTest {
 		String mensagem = "Forum[activated: \"" + forum.isActivated() + "\", #entries: \"" + forum.getEntries().size() + "\", #comments: \"" + 0 + "\"]";
 		
 		Assert.assertEquals(mensagem, forum.toString());
-		
 	}
 
-} 
+	@Test
+	public void testeToStringComComentarios() {
+		List<Entry> entradas = new ArrayList<>();
+		Entry entrada = new Entry();
+		List<Comment> comentarios = new ArrayList<>();
+		Comment comentario1 = new Comment();
+		Comment comentario2 = new Comment();
+
+		comentarios.add(comentario1);
+		comentarios.add(comentario2);
+		entrada.setComments(comentarios);
+		entradas.add(entrada);
+		forum.setEntries(entradas);
+		forum.setActivated(true);
+		
+		
+		String mensagem = "Forum[activated: \"" + forum.isActivated() + "\", #entries: \"" + forum.getEntries().size() + "\", #comments: \"" + 2 + "\"]";
+		
+		Assert.assertEquals(mensagem, forum.toString());
+	}
+}

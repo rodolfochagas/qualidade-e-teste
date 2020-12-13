@@ -30,6 +30,12 @@ public class CourseDetailsUnitTest {
 	}
 
 	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		detalhes.setId((long) 12345);
+		Assert.assertEquals((long) 12345, detalhes.getId());
+	}
+
+	@Test
 	public void testeSetGetInfo() {
 		detalhes.setInfo("Informacao");
 		Assert.assertEquals("Informacao", detalhes.getInfo());

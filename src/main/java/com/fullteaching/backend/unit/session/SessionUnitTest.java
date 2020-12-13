@@ -25,6 +25,12 @@ public class SessionUnitTest {
 	}
 	
 	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		sessao.setId((long) 12345);
+		Assert.assertEquals((long) 12345, sessao.getId());
+	}
+
+	@Test
 	public void testeSetGetTitle() {
 		sessao.setTitle("Titulo");
 		Assert.assertEquals("Titulo", sessao.getTitle());

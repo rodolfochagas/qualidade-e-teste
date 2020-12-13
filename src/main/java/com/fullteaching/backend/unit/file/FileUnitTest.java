@@ -22,6 +22,12 @@ public class FileUnitTest {
 	}
 	
 	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		arquivo.setId((long) 12345);
+		Assert.assertEquals((long) 12345, arquivo.getId());
+	}
+
+	@Test
 	public void testeSetGetType() {
 		arquivo.setType(1);
 		Assert.assertEquals(1, arquivo.getType());
@@ -86,6 +92,6 @@ public class FileUnitTest {
 	@Test
 	public void testeConstructorTypeNameLink() {
 		File arquivoNovo = new File(1, "Nome", "link");
-		Assert.assertTrue(arquivoNovo.getName() == "Nome" && arquivoNovo.getType() == 1 && arquivoNovo.getLink() == "link");
+		Assert.assertTrue(arquivoNovo.getName() == "Nome" && arquivoNovo.getType() == 1 && arquivoNovo.getLink() == "link" && arquivoNovo.getNameIdent() != "") ;
 	}
 }

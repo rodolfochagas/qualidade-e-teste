@@ -28,6 +28,12 @@ public class UserUnitTest {
 		usuario.setId((long)0);
 		Assert.assertTrue((long) 0 == usuario.getId());
 	}
+
+	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		usuario.setId((long)12345);
+		Assert.assertTrue((long) 12345 == usuario.getId());
+	}
 	
 	@Test
 	public void testeSetGetName() {
@@ -61,6 +67,13 @@ public class UserUnitTest {
 		Assert.assertEquals("foto", usuario.getPicture());
 	}
 	
+	@Test
+	public void testeSetGetPictureComConstrutor() {
+		User outroUsuario = new User("Nome", "Senha", "Apelido", "Foto");
+		Assert.assertEquals("Foto", outroUsuario.getPicture());
+	}
+
+
 	@Test
 	public void testeSetGetRegistrationDate() {
 		usuario.setRegistrationDate(111);

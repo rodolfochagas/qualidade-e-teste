@@ -25,6 +25,12 @@ public class FileGroupUnitTest {
 		grupo.setId(0);
 		Assert.assertEquals(0, grupo.getId());
 	}
+
+	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		grupo.setId((long) 12345);
+		Assert.assertEquals((long) 12345, grupo.getId());
+	}
 	
 	@Test
 	public void testeSetGetTitle() {
@@ -93,6 +99,31 @@ public class FileGroupUnitTest {
 		grupo.setFiles(arquivos);
 		grupo.updateFileIndexOrder();
 		Assert.assertEquals(0, arquivo.getIndexOrder());
+	}
+
+	@Test
+	public void testeUpdateFileIndexOrderSemMock() {
+		List <File> arquivos = new ArrayList<>();
+		File arquivo = new File();
+		arquivo.setIndexOrder(20);
+		arquivos.add(arquivo);
+		grupo.setFiles(arquivos);
+		grupo.updateFileIndexOrder();
+		Assert.assertEquals(0, arquivo.getIndexOrder());
+	}
+
+	@Test
+	public void testeUpdateFileIndexComDoisArquivos() {
+		List <File> arquivos = new ArrayList<>();
+		File arquivo1 = new File();
+		File arquivo2 = new File();
+		arquivo1.setIndexOrder(20);
+		arquivo2.setIndexOrder(40);
+		arquivos.add(arquivo1);
+		arquivos.add(arquivo2);
+		grupo.setFiles(arquivos);
+		grupo.updateFileIndexOrder();
+		Assert.assertTrue(arquivo1.getIndexOrder() == 0 && arquivo2.getIndexOrder() == 1);
 	}
 
 	@Test

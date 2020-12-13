@@ -53,6 +53,12 @@ public class CommentUnitTest {
 	}
 	
 	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		comentario.setId((long) 1234567);
+		Assert.assertEquals((long) 1234567, comentario.getId());
+	}
+
+	@Test
 	public void testeSetGetMessage() {
 		comentario.setMessage("qualidade e teste");
 		Assert.assertEquals("qualidade e teste", comentario.getMessage());
@@ -91,4 +97,12 @@ public class CommentUnitTest {
 		Assert.assertTrue(comentario.toString().equals(string));
 	}
 
+	@Test
+	public void testeToStringComRespostas() {
+		List<Comment> respostas = new ArrayList<Comment>();
+		respostas.add(comentario);
+		comentario.setReplies(respostas);
+		String string =  "Comment[message: \"" + mensagem + "\", author: \"" + usuario.getNickName() + "\", parent: \"" + "null" + "\", #replies: " + comentario.getReplies().size() + "date: \"" + data + "\"]";
+		Assert.assertTrue(comentario.toString().equals(string));
+	}
 }

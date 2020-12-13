@@ -28,6 +28,12 @@ public class CourseUnitTest {
 		curso.setId(0);
 		Assert.assertEquals(0, curso.getId());
 	}
+
+	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		curso.setId((long) 12345);
+		Assert.assertEquals((long) 12345, curso.getId());
+	}
 	
 	@Test
 	public void testeSetGetTitle() {

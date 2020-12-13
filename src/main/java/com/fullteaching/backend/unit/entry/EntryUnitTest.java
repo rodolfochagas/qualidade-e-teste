@@ -26,6 +26,12 @@ public class EntryUnitTest {
 		entrada.setId(0);
 		Assert.assertEquals(0, entrada.getId());
 	}
+
+	@Test
+	public void testeSetGetIdDiferenteDeZero() {
+		entrada.setId((long) 12345);
+		Assert.assertEquals((long) 12345, entrada.getId());
+	}
 	
 	@Test
 	public void testeSetGetTitle() {
