@@ -59,7 +59,7 @@ public class FileGroupUnitTest {
 	}
 	
 	@Test
-	public void testeEquals() {
+	public void testeEqualsValidFile() {
 		FileGroup outroGrupo = new FileGroup();
 		FileGroup grupoDiferente = new FileGroup();
 		grupo.setId(1);
@@ -67,7 +67,34 @@ public class FileGroupUnitTest {
 		grupoDiferente.setId(2);
 		Assert.assertTrue(grupo.equals(outroGrupo) && !grupo.equals(grupoDiferente));
 	}
-	
+
+	@Test
+	public void testeEqualsNulo() {
+		Assert.assertFalse(grupo.equals(null));
+	}
+
+	@Test
+	public void testeEqualsMesmoGrupo() {
+		Assert.assertTrue(grupo.equals(grupo));
+	}
+
+	@Test
+	public void testeEqualsTipoDiferente() {
+		File arquivo = Mockito.mock(File.class);
+		Assert.assertFalse(grupo.equals(arquivo));
+	}
+
+	@Test
+	public void testeUpdateFileIndexOrder() {
+		List <File> arquivos = new ArrayList<>();
+		File arquivo = Mockito.mock(File.class);
+		arquivo.setIndexOrder(20);
+		arquivos.add(arquivo);
+		grupo.setFiles(arquivos);
+		grupo.updateFileIndexOrder();
+		Assert.assertEquals(0, arquivo.getIndexOrder());
+	}
+
 	@Test
 	public void testeToString() {
 		grupo.setTitle("Titulo");
@@ -80,6 +107,23 @@ public class FileGroupUnitTest {
 		grupos.add(grupoPai);
 		grupo.setFileGroups(grupos);
 		String string = "FileGroup[title: \"" + grupo.getTitle() + "\", parentFileGroup: \"" + "null" + "\", #files: " + grupo.getFiles().size()+ ", #childrenFileGroups: " + grupo.getFileGroups().size() + "]";
+		Assert.assertEquals(string, grupo.toString());	
+	}
+
+	@Test
+	public void testeToStringComParentFileGroup() {
+		grupo.setTitle("Titulo");
+		FileGroup outroGrupo = Mockito.mock(FileGroup.class);
+		FileGroup grupoPai = new FileGroup("Título pai");
+		List <File> arquivos = new ArrayList<>();
+		File arquivo = Mockito.mock(File.class);
+		arquivos.add(arquivo);
+		grupo.setFiles(arquivos);
+		List <FileGroup> grupos = new ArrayList<>();		
+		grupos.add(outroGrupo);
+		grupo.setFileGroups(grupos);
+		grupo.setFileGroupParent(grupoPai);
+		String string = "FileGroup[title: \"" + grupo.getTitle() + "\", parentFileGroup: \"" + grupoPai.getTitle() + "\", #files: " + grupo.getFiles().size()+ ", #childrenFileGroups: " + grupo.getFileGroups().size() + "]";
 		Assert.assertEquals(string, grupo.toString());	
 	}
 
