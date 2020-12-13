@@ -86,6 +86,24 @@ public class CourseUnitTest {
 	}
 	
 	@Test
+	public void testeEqualsNulo() {
+		Assert.assertFalse(curso.equals(null));
+	}
+
+	@Test
+	public void testeEqualsMesmaInstancia() {
+		User professora = Mockito.mock(User.class);
+		Course outroCurso = new Course("Titulo", "imagem", professora);
+		Assert.assertTrue(outroCurso.equals(outroCurso));
+	}
+
+	@Test
+	public void testeEqualsClassesDiferentes() {
+		User professora = Mockito.mock(User.class);
+		Assert.assertFalse(curso.equals(professora));
+	}
+
+	@Test
 	public void testeToString() {
 		String titulo = "Titulo";
 		User professor = Mockito.mock(User.class);
@@ -103,5 +121,4 @@ public class CourseUnitTest {
 		String mensagem = "Course[title: \"" + titulo + "\", teacher: \"" + professor.getNickName() + "\", #attenders: " + alunos.size() + ", #sessions: " + sessoes.size() + "]";
 		Assert.assertEquals(mensagem, curso.toString());
 	}
-
 }
