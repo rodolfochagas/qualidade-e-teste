@@ -32,42 +32,42 @@ private Map<String, Object> vars;
 JavascriptExecutor js;
 @Before
 public void setUp() {
- System.setProperty("webdriver.chrome.driver","chromedriver_linux64//chromedriver");
- ChromeOptions option = new ChromeOptions();
- option.addArguments("--headless");
- option.setAcceptInsecureCerts(true);
- driver = new ChromeDriver(option);
- js = (JavascriptExecutor) driver;
- vars = new HashMap<String, Object>();
+System.setProperty("webdriver.chrome.driver","chromedriver_linux64//chromedriver");
+ChromeOptions option = new ChromeOptions();
+option.addArguments("--headless");
+option.setAcceptInsecureCerts(true);
+driver = new ChromeDriver(option);
+js = (JavascriptExecutor) driver;
+vars = new HashMap<String, Object>();
 }
 @After
 public void tearDown() {
- driver.quit();
+driver.quit();
 }
 @Test
 public void logIn() {
- driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
- driver.get("https://localhost:5000/");
- driver.manage().window().setSize(new Dimension(1936, 1096));
- {
-   WebElement element = driver.findElement(By.cssSelector("li:nth-child(2) > .navbar-button"));
-   Actions builder = new Actions(driver);
-   builder.moveToElement(element).perform();
- }
- driver.findElement(By.cssSelector("li:nth-child(2) > .navbar-button")).click();
- {
-   WebElement element = driver.findElement(By.tagName("body"));
-   Actions builder = new Actions(driver);
-   builder.moveToElement(element, 0, 0).perform();
- }
- driver.findElement(By.id("email")).sendKeys("teacher@gmail.com");
- driver.findElement(By.id("password")).click();
- {
-   WebElement element = driver.findElement(By.id("log-in-btn"));
-   Actions builder = new Actions(driver);
-   builder.moveToElement(element).perform();
- }
- driver.findElement(By.id("password")).sendKeys("pass");
- driver.findElement(By.id("log-in-btn")).click();
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+driver.get("https://localhost:5000/");
+driver.manage().window().setSize(new Dimension(1936, 1096));
+{
+  WebElement element = driver.findElement(By.cssSelector("li:nth-child(2) > .navbar-button"));
+  Actions builder = new Actions(driver);
+  builder.moveToElement(element).perform();
+}
+driver.findElement(By.cssSelector("li:nth-child(2) > .navbar-button")).click();
+{
+  WebElement element = driver.findElement(By.tagName("body"));
+  Actions builder = new Actions(driver);
+  builder.moveToElement(element, 0, 0).perform();
+}
+driver.findElement(By.id("email")).sendKeys("teacher@gmail.com");
+driver.findElement(By.id("password")).click();
+{
+  WebElement element = driver.findElement(By.id("log-in-btn"));
+  Actions builder = new Actions(driver);
+  builder.moveToElement(element).perform();
+}
+driver.findElement(By.id("password")).sendKeys("pass");
+driver.findElement(By.id("log-in-btn")).click();
 }
 }
